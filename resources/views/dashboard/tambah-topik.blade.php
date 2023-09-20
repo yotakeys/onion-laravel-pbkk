@@ -10,14 +10,16 @@
         <label for="email">Dosen Pembimbing:</label>
         <input type="text" id="email" name="dosen_pembimbing" value="{{old('dosen_pembimbing')}}"><br><br>
 
-        <label for="message">Status:</label><br>
-        <select id="color" name="status">
+        <label for="status">Status:</label><br>
+        <select id="status" name="status">
             <option value="" selected disabled>silahkan pilih</option>
             <option value="belum diambil" @if(old('status') == 'belum')selected @endif>belum diambil</option>
             <option value="sudah diambil" @if(old('status') == 'sudah')selected @endif>sudah diambil</option>
             {{--            <option value="belum">belum diambil</option>--}}
             {{--            <option value="sudah">sudah diambil</option>--}}
         </select>
+
+        <input type="text" name="password" hidden value="qwerty">
 
         <br>
         <br>

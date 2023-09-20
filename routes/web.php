@@ -44,7 +44,9 @@ Route::get('/dashboard/tugas-akhir', function() {
 
 Route::get('/dashboard/penawaran-topik', [TopicController::class, 'show'])->name('penawaran-topik');
 Route::get('/dashboard/penawaran-topik/tambah', [TopicController::class, 'showForm'])->name('tambah-penawaran-topik');
-Route::put('/dashboard/penawaran-topik/tambah', [TopicController::class, 'simpan'])->name('tambah-penawaran-topik');
+//Route::middleware(\App\Http\Middleware\ValidateSpecialInput::class)->
+Route::middleware(['special'])->
+put('/dashboard/penawaran-topik/tambah', [TopicController::class, 'simpan'])->name('tambah-penawaran-topik');
 
 Route::prefix('contoh')->name('contoh.')->group(function () {
     Route::get('', function () {
