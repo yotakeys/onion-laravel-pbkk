@@ -1,0 +1,9 @@
+.col-sidebar {
+    background-color: #eaefff;
+    height: 100%;
+    position: fixed;
+}
+
+.col-content {
+    margin-left: 25%;
+}
