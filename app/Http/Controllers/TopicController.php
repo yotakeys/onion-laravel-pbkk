@@ -2,15 +2,25 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\PesertaTopik;
 use App\Models\Topik;
-use Illuminate\View\View;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
+use Illuminate\View\View;
 
 class TopicController extends Controller
 {
     public function show(): View
     {
-        $topics = Topik::all();
+        $rows = DB::table('topiks')
+            ->join('peserta_topik', 'peserta_topik.id_topik', 'topiks.id')
+            ->join('users', 'peserta_topik.id_user', 'users.id')
+            ->get();
+//        dd($rows[0]->name);
+
+        $topics = Topik::with('peserta')->paginate(2);
+
+//        dd($topics);
 
         return view('dashboard.penawaran-topik', [
             'topics' => $topics,
@@ -46,5 +56,31 @@ class TopicController extends Controller
         );
 
         return redirect()->route('penawaran-topik')->with('status', 'berhasil dimasukkan');
+    }
+
+    public function showformpeserta(Request $request)
+    {
+        return view('dashboard/tambah-peserta')
+            ->with('page', 'tambah-peserta');
+    }
+
+    public function storepesertatopik(Request $request)
+    {
+        $request->validate(
+            [
+                'id_user' => 'required',
+                'id_topik' => 'required',
+            ]
+        );
+
+        PesertaTopik::create(
+            [
+                'id_user' => $request->id_user,
+                'id_topik' => $request->id_topik,
+            ]
+        );
+
+
+        return redirect()->route('tambah-peserta-topik');
     }
 }

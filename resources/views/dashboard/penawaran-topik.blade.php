@@ -35,6 +35,7 @@
                 </tr>
 {{--            @endif--}}
         @endforeach
+        {{$topics->links()}}
         </tbody>
     </table>
 

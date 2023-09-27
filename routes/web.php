@@ -27,6 +27,10 @@ Route::get('/daftar', function() {
     return 'halaman daftar';
 })->name('daftar');
 
+Route::post('/form', [\App\Http\Controllers\FormController::class, 'store'])->name('form');
+Route::get('/form/{id}', [\App\Http\Controllers\FormController::class, 'result'])->name('form_result');
+Route::get('/form',[\App\Http\Controllers\FormController::class, 'index'])->name('form');
+
 // Route::view('/dashboard', 'dashboard.beranda', ['nama' => 'asep']);
 
 Route::get('/dashboard', function() {
@@ -47,6 +51,9 @@ Route::get('/dashboard/penawaran-topik/tambah', [TopicController::class, 'showFo
 //Route::middleware(\App\Http\Middleware\ValidateSpecialInput::class)->
 Route::middleware(['special'])->
 put('/dashboard/penawaran-topik/tambah', [TopicController::class, 'simpan'])->name('tambah-penawaran-topik');
+
+Route::get('/dashboard/penawaran-topik/tambah-peserta', [TopicController::class, 'showformpeserta'])->name('tambah-peserta-topik');
+Route::put('/dashboard/penawaran-topik/tambah-peserta', [TopicController::class, 'storepesertatopik'])->name('tambah-peserta-topik');
 
 Route::prefix('contoh')->name('contoh.')->group(function () {
     Route::get('', function () {
