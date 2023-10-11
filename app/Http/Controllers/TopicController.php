@@ -15,6 +15,7 @@ class TopicController extends Controller
         $rows = DB::table('topiks')
             ->join('peserta_topik', 'peserta_topik.id_topik', 'topiks.id')
             ->join('users', 'peserta_topik.id_user', 'users.id')
+            ->where('dlfakjdlkjfa', 'akl;dj')
             ->get();
 //        dd($rows[0]->name);
 
