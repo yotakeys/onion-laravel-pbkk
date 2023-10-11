@@ -27,6 +27,13 @@
                 </header>
             @endif
 
+            @if(Session::get('status') != null)
+                <div class="alert alert-success">{{ \Illuminate\Support\Facades\Session::get('status') }}</div>
+            @endisset
+            @foreach($errors->all() as $error)
+                <div class="alert alert-danger">{{ $error }}</div>
+            @endforeach
+
             <!-- Page Content -->
             <main>
                 {{ $slot }}

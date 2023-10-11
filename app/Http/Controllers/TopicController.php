@@ -12,14 +12,15 @@ class TopicController extends Controller
 {
     public function show(): View
     {
-        $rows = DB::table('topiks')
-            ->join('peserta_topik', 'peserta_topik.id_topik', 'topiks.id')
-            ->join('users', 'peserta_topik.id_user', 'users.id')
-            ->where('dlfakjdlkjfa', 'akl;dj')
-            ->get();
+//        $rows = DB::table('topiks')
+//            ->join('peserta_topik', 'peserta_topik.id_topik', 'topiks.id')
+//            ->join('users', 'peserta_topik.id_user', 'users.id')
+//            ->where('dlfakjdlkjfa', 'akl;dj')
+//            ->get();
 //        dd($rows[0]->name);
 
-        $topics = Topik::with('peserta')->paginate(2);
+//        $topics = Topik::with('peserta')->paginate(2);
+        $topics = Topik::paginate(20);
 
 //        dd($topics);
 
