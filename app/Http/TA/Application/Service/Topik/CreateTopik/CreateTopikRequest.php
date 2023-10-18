@@ -1,23 +1,16 @@
 <?php
 
-namespace App\Http\TA\Application\Service\UpdateTopik;
+namespace App\Http\TA\Application\Service\Topik\CreateTopik;
 
 use App\Http\TA\Domain\Enum\StatusTopik;
 
-class UpdateTopikRequest
+class CreateTopikRequest
 {
     public function __construct(
-        private int $id,
         private string $judul,
         private string $nama_dosen,
         private StatusTopik $status,
-    )
-    {
-    }
-
-    public function getId(): int
-    {
-        return $this->id;
+    ) {
     }
 
     public function getJudul(): string

@@ -17,9 +17,18 @@ class TopikRepository implements TopikRepositoryInterface
         );
     }
 
-    public function getById(int $topik_id): ?Topik
+    public function getTopikByID(string $topik_id): ?Topik
     {
-        // TODO: Implement getById() method.
+        $topik = DB::table('topiks')->where('id', $topik_id)->first();
+
+        return $topik;
+    }
+
+    public function getAll(): array
+    {
+        $topiks = DB::table('topiks')->get();
+
+        return $topiks->toArray();
     }
 
     private function createPayload(Topik $topik)

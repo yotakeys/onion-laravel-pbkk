@@ -1,21 +1,25 @@
 <?php
 
-namespace App\Http\TA\Application\Service\CreateTopik;
+namespace App\Http\TA\Application\Service\Topik\UpdateTopik;
 
 use App\Http\TA\Domain\Models\Topik;
 use App\Http\TA\Domain\Service\Repository\TopikRepositoryInterface;
 
-class CreateTopikService
+class UpdateTopikService
 {
     public function __construct(
         private TopikRepositoryInterface $topik_repository
-    )
-    {
+    ) {
     }
 
-    public function execute(CreateTopikRequest $request){
+    public function execute(UpdateTopikRequest $request)
+    {
+        //cekking apakah sudah ada
+
+        // kalau ga adaa error
+
         $topik = new Topik(
-            null,
+            $request->getId(),
             $request->getJudul(),
             $request->getNamaDosen(),
             $request->getStatus(),
