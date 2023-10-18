@@ -2,6 +2,8 @@
 
 namespace App\Providers;
 
+use App\Http\TA\Domain\Service\Repository\TopikRepositoryInterface;
+use App\Http\TA\Infrastructure\Repository\TopikRepository;
 use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
@@ -20,5 +22,6 @@ class AppServiceProvider extends ServiceProvider
     public function boot(): void
     {
         //
+        $this->app->bind(TopikRepositoryInterface::class, TopikRepository::class);
     }
 }
